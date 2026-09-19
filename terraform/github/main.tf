@@ -14,7 +14,7 @@ provider "github" {
 resource "github_repository" "this" {
   name        = "personal_de_project"
   description = "Dagster + dbt + Databricks learning pipeline"
-  visibility  = "private"
+  visibility  = "public"
 
   has_issues   = true
   has_projects = false
