@@ -81,7 +81,7 @@ resource "github_repository_environment" "prod" {
   environment = "prod"
 
   reviewers {
-    users = []  # add your GitHub user ID here later if you want manual approval gates
+    users = [165947361] 
   }
 
   deployment_branch_policy {
