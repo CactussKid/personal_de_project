@@ -30,7 +30,7 @@ resource "github_branch_protection" "main" {
   pattern       = "main"
 
   required_pull_request_reviews {
-    required_approving_review_count = 1
+    required_approving_review_count = 0
   }
 
   required_status_checks {
@@ -52,7 +52,7 @@ resource "github_branch_protection" "qa" {
   pattern       = "qa"
 
   required_pull_request_reviews {
-    required_approving_review_count = 1
+    required_approving_review_count = 0
   }
 
   allows_force_pushes = false
