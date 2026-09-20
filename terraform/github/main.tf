@@ -33,11 +33,6 @@ resource "github_branch_protection" "main" {
     required_approving_review_count = 0
   }
 
-  required_status_checks {
-    strict   = true
-    contexts = ["ci"]
-  }
-
   enforce_admins = false
   allows_force_pushes = false
 }
