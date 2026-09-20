@@ -11,6 +11,16 @@ resource "databricks_catalog" "this" {
   # Deleting a catalog with objects in it fails by default. force_destroy
   # lets `terraform destroy` clean up a throwaway dev/learning catalog.
   force_destroy = true
+
+  lifecycle {
+    # storage_root is auto-assigned by Databricks for Default Storage
+    # catalogs (Free Edition serverless workspaces) and is force-new if
+    # changed. We never set it ourselves, so without this, Terraform sees
+    # "real value -> null" on every plan and wants to destroy/recreate the
+    # catalog. Ignoring it tells Terraform: this field is managed by
+    # Databricks, not by us — leave it alone.
+    ignore_changes = [storage_root]
+  }
 }
 
 # One schema resource per entry in var.schemas (bronze, silver, gold by
